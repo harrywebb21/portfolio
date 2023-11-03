@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <GlassCard className="p-8 bg-black flex flex-col justify-between items-center">
-        <div className="flex items-center w-full">
+        <div className="flex flex-col gap-4 sm:flex-row items-center w-full">
           <PageTitle />
           <GlowLine />
         </div>

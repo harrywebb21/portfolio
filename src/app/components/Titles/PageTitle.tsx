@@ -38,7 +38,7 @@ export default function PageTitle() {
         </motion.svg>
         <div className="flex flex-col w-full ">
           <h1
-            className={`${robotoFlex.className} text-white text-6xl whitespace-nowrap`}
+            className={`${robotoFlex.className} text-white text-4xl sm:text-6xl whitespace-nowrap`}
           >
             HARRY WEBB
           </h1>
