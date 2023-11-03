@@ -1,7 +1,7 @@
 import GradientButton from "./components/buttons/GradientButton";
 import GlassCard from "./components/Cards/GlassCard";
 import DrawingH from "./components/Icons/DrawingH";
-import MiscBG from "./components/Icons/miscBG";
+import MiscBG from "./components/Icons/MiscBG";
 import GlowLine from "./components/line/GlowLine";
 import PageTitle from "./components/Titles/PageTitle";
 import { robotoFlex } from "./fonts/fonts";
