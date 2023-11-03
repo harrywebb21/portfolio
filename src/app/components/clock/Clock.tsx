@@ -3,7 +3,9 @@ import { robotoFlex } from "@/app/fonts/fonts";
 import { useState } from "react";
 
 export default function Clock() {
-  let time = new Date().toLocaleTimeString();
+  let time = new Date().toLocaleTimeString("en-US", {
+    timeZone: "Europe/London",
+  });
   const [ctime, setCtime] = useState(time);
   const UpdateTime = () => {
     time = new Date().toLocaleTimeString();
