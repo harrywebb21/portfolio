@@ -42,7 +42,7 @@ export default function PageTitle() {
           >
             HARRY WEBB
           </h1>
-          <Clock />
+          {/* <Clock /> */}
         </div>
       </div>
     </>
