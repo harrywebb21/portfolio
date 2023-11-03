@@ -14,6 +14,7 @@ export default function Home() {
         </div>
         <GradientButton className={robotoFlex.className} buttonName="ACCESS" />
         <GlowLine />
+        test
       </GlassCard>
     </>
   );
