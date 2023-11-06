@@ -17,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <img className="bg-texture" src="bg_texture.png" alt="" />
       <body className={inter.className}>
         <Nav />
         {children}
