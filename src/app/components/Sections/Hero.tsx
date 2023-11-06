@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="w-full h-fit relative">
         <div className="w-full flex items-center">
           <p
-            className={`${squadaOne.className} text-[128px] sm:text-[300px] xl:text-[450px] uppercase text-neutral-900 leading-none`}
+            className={`${squadaOne.className} text-[128px] sm:text-[300px] xl:text-[450px] uppercase text-neutral-900 leading-none `}
           >
             harry
           </p>
@@ -65,7 +65,7 @@ export default function Hero() {
 
         <div className="w-full flex items-center justify-end ">
           <p
-            className={`${squadaOne.className} text-[128px] sm:text-[300px] xl:text-[450px] uppercase text-neutral-900 leading-none`}
+            className={`${squadaOne.className} text-[128px] sm:text-[300px] xl:text-[450px] uppercase text-neutral-900 leading-none sm:leading-[0.5] 2xl:leading-none`}
           >
             webb
           </p>
