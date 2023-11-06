@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap");
-
 :root {
   --default-font: "Roboto Flex";
   --title-weight: 400;
-  background-color: #0d0d0d;
 }
 
 * {
@@ -16,15 +13,25 @@
   box-sizing: border-box;
 }
 
-.page-title {
-  font-family: "Roboto Flex", sans-serif;
+body {
+  background: rgba(255, 255, 255, 0.8);
 }
+body::before {
+  content: "";
+  background-image: url("/bg_texture.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  opacity: 1;
+}
+
 .glowline {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0.1) 100%
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0.1) 100%
   );
 }
 .button-gradient {
@@ -33,4 +40,17 @@
     rgba(255, 255, 255, 1) 0%,
     rgba(255, 255, 255, 0) 100%
   );
+}
+
+.availability-status {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #fff 0%,
+    #98f351 53.13%,
+    #1f4401 100%
+  );
+
+  border-radius: 50%;
+
+  filter: drop-shadow(0px 0px 4px #98f351);
 }

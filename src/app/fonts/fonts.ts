@@ -1,3 +1,11 @@
-import { Roboto_Flex } from "next/font/google";
+import { Roboto, Squada_One } from "next/font/google";
 
-export const robotoFlex = Roboto_Flex({ subsets: ["latin"] });
+export const roboto = Roboto({
+  subsets: ["latin"],
+  weight: "500",
+});
+
+export const squadaOne = Squada_One({
+  subsets: ["latin"],
+  weight: "400",
+});

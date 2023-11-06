@@ -1,11 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Nav from "@/app/components/Nav/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Harry Webb *",
+  title: "Harry Webb*",
   description: "Software Engineer",
 };
 
@@ -16,9 +17,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} p-3 sm:p-8 grid sm:items-center w-screen h-screen`}
-      >
+      <body className={inter.className}>
+        <Nav />
         {children}
       </body>
     </html>

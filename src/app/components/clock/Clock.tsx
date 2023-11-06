@@ -1,7 +1,6 @@
 "use client";
-import { robotoFlex } from "@/app/fonts/fonts";
-import { useLayoutEffect, useRef, useState } from "react";
-
+import { roboto } from "@/app/fonts/fonts";
+import { useLayoutEffect, useState } from "react";
 export default function Clock() {
   let time = new Date().toLocaleTimeString("en-US", {
     timeZone: "Europe/London",
@@ -15,15 +14,18 @@ export default function Clock() {
     };
     setInterval(UpdateTime, 1000);
   });
+
   return (
     <>
       <div className="flex gap-4 items-center ">
         <h1
-          className={`${robotoFlex.className} text-4xl text-white font-bold bg-transparent tabular-nums`}
+          className={`${roboto.className} text-base sm:text-4xl text-neutral-900 font-bold bg-transparent tabular-nums`}
         >
           {ctime}
         </h1>
-        <p className=" text-gray-500">LDN, UK</p>
+        <span className="scramble text-green-400 whitespace-nowrap">
+          LDN, UK
+        </span>
       </div>
     </>
   );

@@ -22,7 +22,7 @@ export default function GlowLine() {
 
   return (
     <>
-      <div ref={target} className="glowline w-full flex-shrink h-[1px]" />
+      <div ref={target} className="glowline w-full  h-[1px] hidden sm:block" />
     </>
   );
 }

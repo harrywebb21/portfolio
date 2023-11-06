@@ -1,5 +1,5 @@
 "use client";
-import { robotoFlex } from "@/app/fonts/fonts";
+import { roboto } from "@/app/fonts/fonts";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Clock from "../clock/Clock";
@@ -38,7 +38,7 @@ export default function PageTitle() {
         </motion.svg>
         <div className="flex flex-col w-full ">
           <h1
-            className={`${robotoFlex.className} text-white text-4xl sm:text-6xl whitespace-nowrap`}
+            className={`${roboto.className} text-white text-4xl sm:text-6xl whitespace-nowrap`}
           >
             HARRY WEBB
           </h1>
