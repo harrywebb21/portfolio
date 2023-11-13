@@ -23,7 +23,7 @@ export default function Name({ className }: { className?: string }) {
   return (
     <div className={`${className} name  w-fit`}>
       <p
-        className={`${roboto.className} text-xl md:text-5xl font-thin uppercase`}
+        className={`${roboto.className} text-2xl 2xl:text-5xl font-thin uppercase`}
       >
         Harry Webb
       </p>

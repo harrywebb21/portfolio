@@ -32,7 +32,7 @@ export default function Hero() {
       <div className="p-8 flex flex-col items-start justify-between h-screen">
         <Name />
         <p
-          className={`${libre.className} text-4xl md:text-[200px] text-right w-full`}
+          className={`${libre.className} text-4xl md:text-[150px] 2xl:text-[200px] text-right w-full`}
         >
           <span className="letter inline-block">{text[0][0]}</span>
           <span className="letter inline-block">{text[0][1]}</span>
