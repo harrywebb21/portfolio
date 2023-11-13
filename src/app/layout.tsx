@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Nav from "@/app/components/Nav/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <img className="bg-texture" src="bg_texture.png" alt="" />
-      <body className={inter.className}>
-        <Nav />
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
