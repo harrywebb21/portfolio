@@ -24,7 +24,6 @@ export default function Hero() {
         duration: 10,
         ease: "linear",
         repeat: Infinity,
-        repeatType: "reverse",
       },
     },
   };
