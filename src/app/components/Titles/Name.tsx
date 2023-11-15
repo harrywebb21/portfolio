@@ -1,10 +1,8 @@
 import { roboto } from "@/app/fonts/fonts";
 import { useLayoutEffect } from "react";
 import gsap from "gsap";
-import { TextPlugin } from "gsap/dist/TextPlugin";
 
 export default function Name({ className }: { className?: string }) {
-  gsap.registerPlugin(TextPlugin);
   useLayoutEffect(() => {
     gsap.fromTo(
       ".name",

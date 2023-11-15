@@ -5,14 +5,24 @@
 :root {
   --default-font: "Roboto Flex";
   --title-weight: 400;
-  background: #111;
   color: #fff;
+  background-color: #111;
+  font-family: var(--default-font);
+  //background: url("/bg_texture.png"), #111 90% / cover no-repeat;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.me-gradient {
+  background: linear-gradient(
+    00deg,
+    rgba(17, 17, 17, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .glowline {
