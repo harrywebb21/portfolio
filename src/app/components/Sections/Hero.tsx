@@ -36,7 +36,7 @@ export default function Hero() {
       trigger: ".hero",
       start: "top top",
       end: "+=600",
-      markers: true,
+
       scrub: true,
       pin: true,
     },
@@ -82,7 +82,7 @@ export default function Hero() {
 
   return (
     <>
-      <div className="p-8 flex flex-col items-start justify-between h-screen">
+      <div className="p-8 flex flex-col items-start justify-between h-screen overflow-hidden">
         <Name />
         <p
           className={`${libre.className} scrollOut text-4xl md:text-[150px] 2xl:text-[200px] text-right w-full`}
