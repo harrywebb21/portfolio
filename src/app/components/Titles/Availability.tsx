@@ -19,7 +19,6 @@ export default function Availability({ className }: { className?: string }) {
         duration: 10,
         ease: "linear",
         repeat: Infinity,
-        repeatType: "reverse",
       },
     },
   };
