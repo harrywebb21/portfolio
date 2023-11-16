@@ -16,6 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Harry Webb</title>
+        <link rel="icon" href="/logo.ico" sizes="any" />
+      </head>
+
       <body className={inter.className}>{children}</body>
     </html>
   );
