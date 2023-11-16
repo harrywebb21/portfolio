@@ -4,6 +4,17 @@ import { useLayoutEffect } from "react";
 
 export default function Me() {
   const tl = gsap.timeline();
+  const scrollTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".me",
+      start: "top top",
+      end: "+=600",
+      scrub: true,
+      pin: true,
+      markers: true,
+    },
+  });
+
   useLayoutEffect(() => {
     tl.fromTo(
       ".wave",
@@ -26,14 +37,11 @@ export default function Me() {
       <div className="flex flex-col p-8">
         <div className=" flex items-center justify-center w-full">
           <div className="relative w-full flex items-center justify-center">
-            <div className="me-gradient relative">
-              <img
-                className="me rounded-full drop-shadow-2xl w-96"
-                src="/me.png"
-                alt=""
-              />
-              <div className=" absolute me-gradient w-96 h-36 bottom-0" />
-            </div>
+            <img
+              className="me rounded-full drop-shadow-2xl w-96"
+              src="/me.png"
+              alt=""
+            />
             <div className=" flex items-center justify-center">
               <p className="hey-prompt text-6xl font-black whitespace-normal">
                 Hey, I&apos;m Harry
