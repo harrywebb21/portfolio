@@ -22,7 +22,7 @@ export default function Home() {
       <div className="p-3">
         <Name />
       </div>
-      <div className="flex flex-col gap-16 items-center justify-center h-full overflow-hidden">
+      <div className="flex flex-col gap-16 items-center justify-center h-screen overflow-hidden">
         {/* <Hero />
       <Me />
     <Marquee /> */}
