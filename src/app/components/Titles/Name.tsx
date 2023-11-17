@@ -19,12 +19,13 @@ export default function Name({ className }: { className?: string }) {
     );
   });
   return (
-    <div className={`${className} name  w-fit`}>
+    <div className={`${className} w-fit flex flex-col`}>
       <p
-        className={`${roboto.className} text-2xl 2xl:text-5xl font-thin uppercase`}
+        className={`name text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap`}
       >
         Harry Webb
       </p>
+      <p className=" w-full text-right">Software Engineer</p>
     </div>
   );
 }
