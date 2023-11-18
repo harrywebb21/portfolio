@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@testing-library/react": "^14.1.0",
+    "@vercel/analytics": "^1.1.1",
     "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
     "gsap-trial": "^3.12.2",
