@@ -21,7 +21,7 @@ export default function Name({ className }: { className?: string }) {
   return (
     <div className={`${className} w-fit flex flex-col`}>
       <p
-        className={`name text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap`}
+        className={`name opacity-0 text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap`}
       >
         Harry Webb
       </p>

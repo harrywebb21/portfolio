@@ -16,7 +16,8 @@ export default function Home() {
 
   return (
     <>
-      <div className=" relative flex flex-col p-8 gap-16 items-center justify-center h-screen overflow-hidden">
+      <div className=" relative flex flex-col p-8 gap-16 items-center justify-center h-screen">
+        <img className="absolute top-0" src="grid.png" alt="" />
         <div className="bg-glow w-[3000px] h-[2000px] rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40" />
         <Name className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         {/* <Hero />
@@ -24,8 +25,8 @@ export default function Home() {
     <Marquee /> */}
         {/* <p className="text-3xl md:text-5xl font-black">
           🚧 WORK IN PROGRESS 🚧
-        </p>
-        <p className="marquee bg-yellow-500 w-fit text-3xl whitespace-nowrap font-black">
+          </p>
+          <p className="marquee bg-yellow-500 w-fit text-3xl whitespace-nowrap font-black">
           DO NOT CROSS! DO NOT CROSS! DO NOT CROSS! DO NOT CROSS! DO NOT CROSS!
           DO NOT CROSS! DO NOT CROSS! DO NOT CROSS! DO NOT CROSS! DO NOT CROSS!
           DO NOT CROSS! DO NOT CROSS! DO NOT CROSS! DO NOT CROSS! DO NOT CROSS!
