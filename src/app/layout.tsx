@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo.ico" sizes="any" />
       </head>
 
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-hidden`}>
         {children}
         <Analytics />
       </body>
