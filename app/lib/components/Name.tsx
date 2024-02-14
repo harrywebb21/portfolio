@@ -35,12 +35,12 @@ export default function Name({ className, onClick }: { className?: string, onCli
     <div className={`${className} w-fit flex flex-col items-end`}>
       <div className=" flex gap-8 pointer-events-none" onClick={onClick}>
         <p
-          className={`name firstname opacity-0 text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap`}
+          className={`name firstname opacity-0 text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap pointer-events-none`}
         >
           Harry
         </p>
         <p
-          className={`name surname opacity-0 text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap`}
+          className={`name surname opacity-0 text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap pointer-events-none`}
         >
           Webb
         </p>
