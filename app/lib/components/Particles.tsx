@@ -9,6 +9,7 @@ type ParticlesProps = {
   color: string;
   spread: number;
   onClick?: () => void;
+  shape: "cube" | "sphere";
 };
 
 export default function Particles({
@@ -17,9 +18,9 @@ export default function Particles({
   color,
   spread,
   onClick,
-  type,
+  shape
 }: ParticlesProps) {
-  const particles = useRef();
+  const particles = useRef(null) as any;
 
   useFrame(() => {
     particles.current.rotation.y += 0.001;
@@ -29,11 +30,11 @@ export default function Particles({
   const verticesAmount = amount;
   const positionArray = new Float32Array(verticesAmount * 3);
 
-  if (type === "cube") {
+  if (shape === "cube") {
     for (let i = 0; i < verticesAmount * 3; i++) {
       positionArray[i] = (Math.random() - 0.5) * spread;
     }
-  } else if (type === "sphere") {
+  } else if (shape === "sphere") {
     const radius = 1;
     for (let i = 0; i < verticesAmount; i++) {
       const i3 = i * 3;

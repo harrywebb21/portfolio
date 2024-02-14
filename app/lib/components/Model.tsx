@@ -1,14 +1,13 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { PrimitiveProps, useFrame } from "@react-three/fiber";
 
 export default function Model(props: any, ) {
     
-    const { nodes, materials, animations } = useGLTF(`/glb/hbubble.glb`);
-    console.log("nodes", nodes)
-    const { ref, actions, names} = useAnimations(animations);
-    const modelRef = useRef(null);
-
+    const { nodes, animations } = useGLTF(`/glb/hbubble.glb`);
+    const { ref} = useAnimations(animations);
+    const modelRef = useRef(null) as any;
+    
     useFrame((state, delta) => {
       
       modelRef.current.rotation.z += delta;
