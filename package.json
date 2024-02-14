@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "threejs_attempt",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,28 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@testing-library/react": "^14.1.0",
-    "@vercel/analytics": "^1.1.1",
-    "framer-motion": "^10.16.4",
-    "gsap": "^3.12.2",
-    "gsap-trial": "^3.12.2",
-    "keen-slider": "^6.8.6",
-    "next": "^14.0.1",
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.96.0",
+    "@react-three/fiber": "^8.15.14",
+    "framer-motion": "^11.0.3",
+    "gsap": "^3.12.5",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-fast-marquee": "^1.6.2",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-marquee-slider": "^1.1.5"
+    "three": "^0.160.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10",
+    "@types/three": "^0.160.0",
+    "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "14.0.4",
     "postcss": "^8",
-    "tailwindcss": "^3",
+    "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
 }

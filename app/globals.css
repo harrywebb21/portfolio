@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+  background-color: #000000;
+}
+html{
+  overflow: hidden;
+}
+
+#canvas-container {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+
+}
+
+canvas {
+  touch-action: none;
+}
+
+.bg-glow {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(217, 217, 217, 0) 100%
+  );
+}
+
+
+
+.name {
+  background: linear-gradient(
+    90deg,
+    #57f14a,
+    rgba(108, 232, 195, 1),
+    rgba(182, 242, 224, 1),
+    rgba(33, 130, 101, 1),
+    rgba(72, 233, 58, 1),
+    #3ae9bf
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

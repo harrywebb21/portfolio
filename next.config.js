@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    transpilePackages: ['three']
+}
 
-module.exports = nextConfig;
-generateBuildId: () => {
-  return process.env.GIT_SHA || "";
-};
+module.exports = nextConfig
