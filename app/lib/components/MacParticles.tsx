@@ -57,7 +57,7 @@ export default function Particles({
     <points ref={particles} onClick={onClick}>
       <bufferGeometry>
         <bufferAttribute
-          attach="attributes-position"
+          attach="position"
           count={positionArray.length / 3}
           array={positionArray}
           itemSize={3}

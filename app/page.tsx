@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <div id="canvas-container">
-        <Canvas shadows camera={{ position: [0, 0, 10], fov: 25 }}>
+        <Canvas className="touch-none" shadows camera={{ position: [0, 0, 10], fov: 25 }}>
           <ambientLight intensity={0.8} color="white" />
           <directionalLight color="white" position={[0, 1, 5]} castShadow />
           <pointLight
