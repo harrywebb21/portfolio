@@ -11,7 +11,7 @@ import Model from "./lib/components/Model";
 import Name from "./lib/components/Name";
 import Nav from "./lib/components/Nav";
 import BgGrid from "./lib/components/BgGrid";
-
+import MyCanvas from "./lib/components/MyCanvas";
 
 export default function Home() {
   const [colour, setColour] = useState(0);
@@ -19,48 +19,37 @@ export default function Home() {
 
   return (
     <>
-      <div id="canvas-container">
-        <Canvas className="touch-none" shadows camera={{ position: [0, 0, 10], fov: 25 }}>
-          <ambientLight intensity={0.8} color="white" />
-          <directionalLight color="white" position={[0, 1, 5]} castShadow />
-          <pointLight
-            color="white"
-            position={[0, 0, 10]}
-            castShadow
-            shadow-mapSize-width={2000}
-            shadow-mapSize-height={3000}
-          />
-            <PresentationControls
-              global
-              config={{ mass: 2, tension: 500 }}
-              snap={{ mass: 4, tension: 1500 }}
-              rotation={[0, 0, 0]}
-              polar={[-Math.PI / 3, Math.PI / 3]}
-              azimuth={[-Math.PI / 1.4, Math.PI / 2]}
-            >
-              <Model />
-            </PresentationControls>
-         
-          <mesh
-            receiveShadow
-            position={[0, -1.8, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          >
-            <planeGeometry args={[100, 100, 1, 1]} />
-            <shadowMaterial transparent opacity={0.5} />
-          </mesh>
+      <MyCanvas>
+        <PresentationControls
+          global
+          config={{ mass: 2, tension: 500 }}
+          snap={{ mass: 4, tension: 1500 }}
+          rotation={[0, 0, 0]}
+          polar={[-Math.PI / 3, Math.PI / 3]}
+          azimuth={[-Math.PI / 1.4, Math.PI / 2]}
+        >
+          <Model />
+        </PresentationControls>
 
-          <Particles
-            amount={1000}
-            size={0.02}
-            color={colours[Math.floor(Math.random() * 3)]}
-            spread={10}
-            shape="cube"
-          />
-        </Canvas>
-      </div>
+        <mesh
+          receiveShadow
+          position={[0, -1.8, 0]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        >
+          <planeGeometry args={[100, 100, 1, 1]} />
+          <shadowMaterial transparent opacity={0.5} />
+        </mesh>
+
+        <Particles
+          amount={1000}
+          size={0.02}
+          color={colours[Math.floor(Math.random() * 3)]}
+          spread={10}
+          shape="cube"
+        />
+      </MyCanvas>
       <div className="bg-glow w-[3000px] h-[2000px] rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40 pointer-events-none" />
-      <Name className="absolute z-20 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 "/>
+      <Name className="absolute z-20 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 " />
       <Nav />
       <BgGrid />
     </>

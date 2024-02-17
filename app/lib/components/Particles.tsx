@@ -1,5 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+import { BufferGeometry } from "three";
 
 type ParticlesProps = {
   amount: number;
@@ -16,7 +17,7 @@ export default function Particles({
   color,
   spread,
   onClick,
-  shape
+  shape,
 }: ParticlesProps) {
   const particles = useRef<any>(null);
 
@@ -45,8 +46,10 @@ export default function Particles({
       positionArray[i3 + 2] = radius * Math.cos(phi) * spread;
     }
   }
-
-  // Apply logic to replace NaN values with random numbers
+  console.log(
+    "buffer geometry: ",
+    particles.current.geometry as BufferGeometry
+  );
   for (let i = 0; i < positionArray.length; i++) {
     if (isNaN(positionArray[i])) {
       positionArray[i] = Math.random();
