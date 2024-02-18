@@ -46,10 +46,7 @@ export default function Particles({
       positionArray[i3 + 2] = radius * Math.cos(phi) * spread;
     }
   }
-  console.log(
-    "buffer geometry: ",
-    particles.current.geometry as BufferGeometry
-  );
+
   for (let i = 0; i < positionArray.length; i++) {
     if (isNaN(positionArray[i])) {
       positionArray[i] = Math.random();
