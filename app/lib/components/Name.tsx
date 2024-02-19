@@ -33,7 +33,7 @@ export default function Name({ className, onClick }: { className?: string, onCli
   });
   return (
     <div className={`${className} w-fit flex flex-col items-end select-none`}>
-      <div className=" flex sm:gap-4 gap-8  pointer-events-none" onClick={onClick}>
+      <div className=" flex sm:gap-8 gap-4  pointer-events-none" onClick={onClick}>
         <p
           className={`name firstname opacity-0 text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap pointer-events-none`}
         >
