@@ -13,6 +13,7 @@ export default function Nav(){
             drag
             whileDrag={{ scale: 1.25, color: "rgba(87, 241, 74, 1)" }}
             dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
+            whileHover={{color: "rgba(87, 241, 74, 1)" }}
             className="about text-2xl text-neutral-700 hover:cursor-pointer"
           >
             ABOUT
@@ -29,6 +30,7 @@ export default function Nav(){
             drag
             whileDrag={{ scale: 1.25, color: "rgba(58, 233, 191, 1)" }}
             dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
+            whileHover={{color: "rgba(58, 233, 191, 1)" }}
             className="button text-2xl text-neutral-700 hover:cursor-pointer"
           >
             WORK

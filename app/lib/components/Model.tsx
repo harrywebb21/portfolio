@@ -1,6 +1,14 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { animated } from "@react-spring/three";
+
+
+function mouseOver(){
+  console.log("mouse over");
+
+}
+
 
 export default function Model(props: any) {
   const { nodes, animations } = useGLTF(`/glb/hbubble.glb`);
@@ -12,17 +20,21 @@ export default function Model(props: any) {
     modelRef.current.rotation.x += delta;
   });
 
+
+
+
   return (
     <>
-      <group {...props} ref={ref} castShadow dispose={null}>
+      <animated.group {...props} ref={ref} castShadow dispose={null}>
         <primitive
           ref={modelRef}
           object={nodes.Scene}
           args={[0, 0, 0]}
           scale={[1, 1, 1]}
           castShadow
+          
         />
-      </group>
+      </animated.group>
     </>
   );
 }

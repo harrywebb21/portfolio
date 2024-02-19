@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 
-export default function MyCanvas({ children }: { children: React.ReactNode }) {
+export default function MyCanvas({ children, className }: { children: React.ReactNode, className?: string}) {
   return (
-    <div id="canvas-container">
+    <div id={`canvas-container`}>
       <Canvas
         className="touch-none"
         shadows

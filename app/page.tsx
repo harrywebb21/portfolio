@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <MyCanvas>
+      <MyCanvas className="h-dvh w-dvw relative">
         <PresentationControls
           global
           config={{ mass: 2, tension: 500 }}
