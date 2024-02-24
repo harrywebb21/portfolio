@@ -12,6 +12,7 @@ import Name from "./lib/components/Name";
 import Nav from "./lib/components/Nav";
 import BgGrid from "./lib/components/BgGrid";
 import MyCanvas from "./lib/components/MyCanvas";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [colour, setColour] = useState(0);
@@ -19,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <MyCanvas className="h-dvh w-dvw relative">
+      <MyCanvas className="!h-dvh !w-dvw relative">
         <PresentationControls
           global
           config={{ mass: 2, tension: 500 }}

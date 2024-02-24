@@ -2,20 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root{
+:root {
   background-color: #000000;
 }
-html{
+html {
   overflow: hidden;
-}
-
-#canvas-container {
-  position: relative;
-  width: 100dvw;
-  height: 100dvh;
-  overflow: hidden;
-
 }
 
 canvas {
