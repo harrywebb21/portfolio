@@ -1,9 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
-  background-color: #000000;
+  background: radial-gradient(#474747 0%, #3f3f3f 100%);
 }
 html {
   overflow: hidden;
@@ -21,6 +20,22 @@ canvas {
   );
 }
 
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 .name {
   background: linear-gradient(
     90deg,

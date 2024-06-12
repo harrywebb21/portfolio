@@ -1,6 +1,6 @@
 "use client";
 
-import Model from "@/app/lib/components/Model";
+import Model from "@/app/lib/components/HeadModel";
 import MyCanvas from "@/app/lib/components/MyCanvas";
 import { useSpring } from "@react-spring/three";
 import { useRouter } from "next/navigation";
@@ -14,7 +14,7 @@ export default function HomeNavButton() {
   }, [hovered]);
 
   const { scale } = useSpring({
-    scale: hovered ? [1.125, 1.125, 1.125] : [1, 1, 1],
+    scale: hovered ? [1.625, 1.625, 1.625] : [1.5, 1.5, 1.5],
     config: config.wobbly,
   });
 
@@ -22,10 +22,9 @@ export default function HomeNavButton() {
 
   return (
     <>
-      <MyCanvas className="!h-24 !w-24">
+      <MyCanvas>
         <group
           position={[0, 0, 0]}
-          rotation={[0, 0, 0]}
           onClick={() => router.push("/")}
           onPointerOver={() => {
             setHovered(true);

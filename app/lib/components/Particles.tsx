@@ -1,6 +1,5 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { BufferGeometry } from "three";
 
 type ParticlesProps = {
   amount: number;
