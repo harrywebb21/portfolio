@@ -1,43 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-  background: radial-gradient(#474747 0%, #3f3f3f 100%);
+
+::-webkit-scrollbar {
+  width: 10px;
 }
-html {
-  overflow: hidden;
+
+::-webkit-scrollbar-track {
+  background: #1d1d1d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3ae951;
+  border-radius: 10px;
+}
+
+@font-face {
+  font-family: "OffBit 101";
+  src: url("/fonts/OffBitTrial-101.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Grotesk Wide";
+  src: url("/fonts/HKGroteskWide-Black.otf");
+}
+
+:root {
+  background: radial-gradient(#000000 100%);
 }
 
 canvas {
   touch-action: none;
 }
 
-.bg-glow {
+/* .bg-glow {
   background: radial-gradient(
     50% 50% at 50% 50%,
     rgba(255, 255, 255, 0.25) 0%,
     rgba(217, 217, 217, 0) 100%
   );
+} */
+
+.avail-dot {
+  animation: glow 3s infinite alternate;
 }
 
-.marquee {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  box-sizing: border-box;
-  animation: marquee 5s linear infinite;
-}
-
-@keyframes marquee {
+@keyframes glow {
   0% {
-    transform: translateX(100%);
+    opacity: 0.75;
+    box-shadow: 0 0 10px 0px #43832f;
   }
   100% {
-    transform: translateX(-100%);
+    opacity: 1;
+    box-shadow: 0 0 10px 3px #43832f;
   }
 }
+
 .name {
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     #57f14a,
     rgba(108, 232, 195, 1),
@@ -47,5 +68,9 @@ canvas {
     #3ae9bf
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+}
+
+.hero-gradient {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }

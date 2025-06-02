@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GbaProvider } from "react-gbajs";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -15,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
+    <html lang="en" suppressHydrationWarning>
+      <head suppressHydrationWarning>
         <link rel="icon" href="/hbubble.ico" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} h-svh`} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

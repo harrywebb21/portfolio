@@ -1,3 +1,4 @@
+"use client";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
@@ -22,8 +23,8 @@ export default function Particles({
 
   useFrame(() => {
     if (particles.current) {
-      particles.current.rotation.y += 0.001;
-      particles.current.rotation.x += 0.001;
+      particles.current.rotation.y += 0.0001;
+      particles.current.rotation.x += 0.0001;
     }
   });
 
