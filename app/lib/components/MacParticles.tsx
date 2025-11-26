@@ -16,7 +16,7 @@ export default function Particles({
   color,
   spread,
   onClick,
-  shape
+  shape,
 }: ParticlesProps) {
   const particles = useRef<any>(null);
 
