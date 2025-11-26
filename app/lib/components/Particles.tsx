@@ -61,6 +61,7 @@ export default function Particles({
           count={positionArray.length / 3}
           array={positionArray}
           itemSize={3}
+          args={[positionArray, 3]}
         />
       </bufferGeometry>
       <pointsMaterial

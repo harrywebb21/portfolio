@@ -63,7 +63,8 @@ const GlassDistortionMaterial = shaderMaterial(
 extend({ GlassDistortionMaterial });
 
 // Declare the material type for TypeScript
-declare global {
+// Augment React's JSX namespace so TypeScript recognizes the custom material element
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       glassDistortionMaterial: any;
@@ -72,7 +73,8 @@ declare global {
 }
 
 export function HeroShader() {
-  const materialRef = useRef<any>();
+  // Initialize ref with null to satisfy React useRef type requirements
+  const materialRef = useRef<any>(null);
   const { gl, scene, camera } = useThree();
   const renderTargetRef = useRef<THREE.WebGLRenderTarget | null>(null);
 

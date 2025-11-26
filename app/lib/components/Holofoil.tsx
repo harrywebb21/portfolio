@@ -22,11 +22,11 @@
 //holoTime: number
 
 import { shaderMaterial } from "@react-three/drei";
-import { extend, ReactThreeFiber, useFrame } from "@react-three/fiber";
+import { extend, useFrame } from "@react-three/fiber";
+import type { ThreeElements } from "@react-three/fiber";
 import { JSX, useRef } from "react";
 import * as THREE from "three";
-//Nextjs 15 uses ThreeElement from @react-three/fiber instead of ThreeElements from three/examples/jsm/threejs/ThreeElements";
-import { type ThreeElements } from "@react-three/fiber";
+//Nextjs 15 uses ThreeElement from @react-three/fiber instead of ThreeElements from three/examples/jsm/threejs/ThreeElements
 
 declare module "three" {
   interface ShaderMaterial {
@@ -34,13 +34,11 @@ declare module "three" {
   }
 }
 
-declare global {
+// Augment React's JSX IntrinsicElements so TypeScript recognizes the custom element
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      holoShader: ReactThreeFiber.Object3DNode<
-        THREE.ShaderMaterial,
-        typeof THREE.ShaderMaterial
-      >;
+      holoShader: ThreeElements["shaderMaterial"];
     }
   }
 }
