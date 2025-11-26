@@ -1,15 +1,13 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
-//react imports
-import { Suspense } from "react";
 
-//three imports
 import {
   Environment,
-  Float,
+  Html,
+  MeshTransmissionMaterial,
   PresentationControls,
-  Resize,
   SpotLight,
+  Stars,
 } from "@react-three/drei";
 
 //local imports
@@ -21,76 +19,146 @@ import Particles from "./lib/components/Particles";
 import Availability from "./lib/components/Availability";
 import CurrentTime from "./lib/components/CurrentTime";
 import React from "react";
-import { GBConsole } from "./lib/components/models/GBConsole";
+
+import Projects from "./lib/components/sections/Projects";
+import Experience from "./lib/components/sections/Experience";
+import { motion, useScroll, useSpring } from "framer-motion";
+import Nav from "./lib/components/Nav";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [activeSection, setActiveSection] = React.useState<string>("home");
+
+  setTimeout(() => {
+    // Simulate a loading delay
+    setIsLoading(false);
+  }, 2000);
+
+  const { scrollYProgress } = useScroll();
+  const nameOpacity = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
+  const handleTabChange = (tab: string) => {
+    setActiveSection(tab);
+    console.log("Active section:", tab);
+  };
+
   return (
     <>
-      <div className="w-full h-full shadow-md flex flex-col ">
-        <div className="w-full flex flex-col justify-start items-start h-full relative">
-          <Suspense
-            fallback={
-              <div className="flex w-full h-full items-center justify-center">
-                <div className="flex w-full h-fit gap-8 p-4">
-                  <LoadingBar />
+      {<LoadingBar isLoading={isLoading} />}
+      <div
+        className={`${
+          isLoading ? "overflow-y-hidden" : ""
+        } w-full h-full shadow-md flex flex-col   `}
+      >
+        <div className="w-full  shadow-md flex flex-col ">
+          <div className="w-full flex flex-col justify-start items-start h-dvh relative">
+            <div className="absolute z-10 flex items-end justify-between bottom-0 p-4 w-full ">
+              <Nav onTabChange={handleTabChange} />
+              <div className="flex flex-col items-end justify-end gap-2">
+                <Availability />
+                <div className="flex gap-2">
+                  <CurrentTime />
+                  <p className="text-white">London, UK</p>
                 </div>
               </div>
-            }
-          >
-            <div className=" absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-50 h-fit flex items-center  ">
-              <Name />
             </div>
-            {/* <div className="absolute z-10 flex flex-col items-start bottom-2 right-2  p-4 rounded-xl">
-              <Availability />
-              <div className="flex gap-2">
-                <CurrentTime />
-                <p className="text-white">London, UK</p>
-              </div>
-            </div> */}
-            <div className=" w-full h-full flex">
+            <div className=" w-full h-full flex fixed top-0 left-0 justify-center items-center ">
               <MyCanvas camera={{ position: [0, 0, 23], fov: 10 }}>
                 <Environment preset="warehouse" />
+                {/* <Environment
+                  files={"/green-flames.hdr"}
+                  background
+                  blur={0.5}
+                  backgroundIntensity={0.015}
+                  environmentIntensity={0.2}
+                /> */}
+
                 <PresentationControls
                   global
-                  snap={1500}
+                  snap={100}
                   damping={0.2}
-                  rotation={[0, 0, 0]}
                   polar={[-Math.PI / 36, Math.PI / 36]}
                   azimuth={[-Math.PI / 36, Math.PI / 36]}
                 >
-                  <Resize height width>
-                    <Model />
-                  </Resize>
-                  <SpotLight
-                    position={[10, 10, 10]}
-                    angle={0.15}
-                    penumbra={1}
-                    intensity={2}
+                  <Model scale={0.6} position={[0, 20, -20]} />
+                  <Model scale={1} position={[20, 20, -20]} />
+                  <Model scale={0.31} position={[0, -10, -10]} />
+                  <Model scale={2} position={[-20, 20, 20]} />
+                  <Model scale={1.6} position={[0, 0, -1]} />
+                  <Particles
+                    amount={10000}
+                    size={0.3}
                     color={"white"}
-                    castShadow
+                    spread={100}
+                    shape={"cube"}
                   />
                 </PresentationControls>
-                <Particles
-                  amount={10000}
-                  size={0.1}
+                <Html center>
+                  <Name scrollOpacity={nameOpacity.get()} />
+                </Html>
+                <mesh position={[0, 0, 4]}>
+                  <planeGeometry args={[30, 30]} />
+                  <MeshTransmissionMaterial
+                    attach="material"
+                    thickness={0.5}
+                    roughness={0.7}
+                    color="white"
+                    ior={1}
+                    attenuationDistance={0.5}
+                    distortionScale={2}
+                    temporalDistortion={2}
+                    transparent
+                  />
+                </mesh>
+                <SpotLight
+                  position={[10, 10, 10]}
+                  angle={0.15}
+                  penumbra={1}
+                  intensity={2}
                   color={"white"}
-                  spread={100}
-                  shape={"cube"}
+                  castShadow
+                />
+                <Stars
+                  radius={100}
+                  depth={50}
+                  count={5000}
+                  factor={4}
+                  saturation={0}
+                  fade
+                  speed={1}
                 />
               </MyCanvas>
             </div>
             <div className="absolute bottom-0 left-0 w-full h-1/6 hero-gradient " />
-          </Suspense>
+          </div>
         </div>
-      </div>
-      <div className=" w-1/3 h-full">
-        {/* <Suspense fallback={nul}>
-          <MyCanvas camera={{ position: [0, 0, 23], fov: 15 }}>
-            <Float>
-              <GBConsole />
-            </Float>
-          </MyCanvas>
-        </Suspense> */}
+        {/* <div className="h-full flex flex-col justify-center items-center w-full ">
+          <Experience />
+          <Projects />
+          <div className=" w-72 h-full flex justify-center items-center">
+            <MyCanvas camera={{ position: [0, 0, 23], fov: 15 }}>
+              <Environment
+                files={"/green-flames.hdr"}
+                blur={2}
+                backgroundBlurriness={2}
+              />
+              <EffectComposer>
+                <HueSaturation
+                  saturation={0.6}
+                  hue={2}
+                  blendFunction={BlendFunction.OVERLAY}
+                />
+                <Float>
+                  <GBConsole />
+                </Float>
+              </EffectComposer>
+            </MyCanvas>
+          </div>
+        </div> */}
       </div>
     </>
   );

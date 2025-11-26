@@ -1,13 +1,21 @@
 "use client";
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
+import localFont from "next/font/local";
+
+const nameFont = localFont({
+  src: "../../fonts/Dirtyline.woff",
+  display: "swap",
+});
 
 export default function Name({
   className,
   onClick,
+  scrollOpacity,
 }: {
   className?: string;
   onClick?: React.MouseEventHandler;
+  scrollOpacity?: number;
 }) {
   let count = 0;
   useLayoutEffect(() => {
@@ -39,20 +47,23 @@ export default function Name({
     );
   });
   return (
-    <div className={`${className} w-fit flex flex-col items-end select-none`}>
+    <div
+      style={{ opacity: scrollOpacity }}
+      className={`${className} w-fit flex flex-col items-end select-none transition-all duration-300 ease-in-out`}
+    >
       <div
-        className=" flex  sm:gap-8 gap-4  pointer-events-none"
+        className={` ${nameFont.className} flex  sm:gap-8 gap-4  pointer-events-none`}
         onClick={onClick}
       >
         <p
-          className={`text-white name  text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap pointer-events-none`}
+          className={`text-white name  text-5xl md:text-9xl 2xl:text-[276px] font-black  whitespace-nowrap pointer-events-none transition-all duration-300 ease-in-out`}
         >
-          Harry
+          HArRy
         </p>
         <p
-          className={`text-white name  text-5xl md:text-9xl 2xl:text-[200px] font-black uppercase whitespace-nowrap pointer-events-none`}
+          className={`text-white name  text-5xl md:text-9xl 2xl:text-[276px] font-black whitespace-nowrap pointer-events-none transition-all duration-300 ease-in-out`}
         >
-          Webb
+          WebB
         </p>
       </div>
       <div

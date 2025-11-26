@@ -1,8 +1,8 @@
 "use client";
 import { useProgress } from "@react-three/drei";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function LoadingBar() {
+export default function LoadingBar({ isLoading }: { isLoading?: boolean }) {
   const { progress } = useProgress();
 
   const loadingBar = {
@@ -13,14 +13,25 @@ export default function LoadingBar() {
   };
 
   return (
-    <div className="flex w-full flex-col">
-      <div className="text-white text-3xl font-bold">LOADING...</div>
-      <div className=" w-full h-full flex gap-2">
-        <div className="w-full  flex  items-center border p-1">
+    <motion.div
+      animate={{
+        opacity: isLoading ? 1 : 0,
+        display: isLoading ? "flex" : "none",
+      }}
+      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      className="flex w-full flex-col p-6 h-screen justify-center items-center bg-black absolute top-0 left-0 z-50 pointer-events-none overflow-none"
+    >
+      <div className=" w-1/2 flex justify-center gap-2">
+        <div className="w-1/2  flex h-12 items-center  border p-1">
           <motion.div
             animate={loadingBar}
-            className="h-full w-full  bg-white"
-          ></motion.div>
+            className="h-full w-full flex items-center justify-center bg-white"
+          >
+            <h1 className="text-white-white bg-blend-difference">
+              {progress}%
+            </h1>
+          </motion.div>
         </div>
         <svg
           width="55"
@@ -44,6 +55,6 @@ export default function LoadingBar() {
           />
         </svg>
       </div>
-    </div>
+    </motion.div>
   );
 }

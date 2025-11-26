@@ -13,11 +13,6 @@ export default function Model(props: any) {
   const { ref } = useAnimations(animations);
   const modelRef = useRef(null) as any;
 
-  useFrame((state, delta) => {
-    modelRef.current.rotation.z += delta;
-    modelRef.current.rotation.x += delta;
-  });
-
   return (
     <>
       <animated.group {...props} ref={ref} castShadow dispose={null}>

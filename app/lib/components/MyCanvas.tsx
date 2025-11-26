@@ -1,7 +1,8 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { Preload } from "@react-three/drei";
 import * as THREE from "three";
+import LoadingBar from "./LoadingBar";
+import { Preload } from "@react-three/drei";
 import { Suspense } from "react";
 
 export default function MyCanvas({ children, ...props }: any) {
@@ -21,45 +22,47 @@ export default function MyCanvas({ children, ...props }: any) {
       dpr={[1, 2]}
       camera={{ position: [0, 0, 5], fov: 75 }}
     >
-      <ambientLight intensity={1} position={[0, 0, 0]} color="white" />
-      <directionalLight
-        color="white"
-        position={[0, 0, -1]}
-        intensity={1}
-        rotation={[2, 2, 2]}
-        castShadow
-      />
+      <Suspense fallback={null}>
+        <ambientLight intensity={1} position={[0, 0, 0]} color="white" />
+        <directionalLight
+          color="white"
+          position={[0, 0, -1]}
+          intensity={1}
+          rotation={[2, 2, 2]}
+          castShadow
+        />
 
-      <directionalLight
-        color="white"
-        position={[0, 1, 5]}
-        intensity={1}
-        castShadow
-      />
+        <directionalLight
+          color="white"
+          position={[0, 1, 5]}
+          intensity={1}
+          castShadow
+        />
 
-      <directionalLight
-        color="white"
-        position={[1, 0.5, 5]}
-        intensity={1}
-        castShadow
-      />
+        <directionalLight
+          color="white"
+          position={[1, 0.5, 5]}
+          intensity={1}
+          castShadow
+        />
 
-      <directionalLight
-        color="white"
-        position={[-1, 0.5, 5]}
-        intensity={1}
-        castShadow
-      />
-      <pointLight
-        color="white"
-        position={[0, 0, 10]}
-        castShadow
-        shadow-mapSize-width={2000}
-        shadow-mapSize-height={3000}
-      />
+        <directionalLight
+          color="white"
+          position={[-1, 0.5, 5]}
+          intensity={1}
+          castShadow
+        />
+        <pointLight
+          color="white"
+          position={[0, 0, 10]}
+          castShadow
+          shadow-mapSize-width={2000}
+          shadow-mapSize-height={3000}
+        />
 
-      {children}
-      <Preload all />
+        {children}
+        <Preload all />
+      </Suspense>
     </Canvas>
   );
 }

@@ -1,9 +1,14 @@
 "use client";
 import * as THREE from "three";
-import React from "react";
-import { Html, MeshTransmissionMaterial, useGLTF } from "@react-three/drei";
+import React, { use } from "react";
+import {
+  Html,
+  MeshReflectorMaterial,
+  MeshTransmissionMaterial,
+  useGLTF,
+} from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { useSpring, animated } from "@react-spring/three";
+import { useSpring, animated, a } from "@react-spring/three";
 import { ThreeElements, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
@@ -83,6 +88,10 @@ export function GBConsole(props: GroupProps) {
     [number, number, number]
   >([0, 0, 0]);
 
+  const [consoleRotation, setConsoleRotation] = React.useState<
+    [number, number, number]
+  >([1.25, 0, 0]);
+
   const [power, setPower] = React.useState(false);
   const buttonASpring = useSpring({
     buttonAPosition,
@@ -109,9 +118,25 @@ export function GBConsole(props: GroupProps) {
     rotation: buttonDPadRotation,
   });
 
+  const turnConsoleOver = useSpring({
+    rotation: consoleRotation,
+    config: { mass: 1, tension: 100, friction: 20 },
+  });
+
   const { nodes, materials } = useLoader(GLTFLoader, "/glb/gameboy.glb");
   return (
-    <group {...props} dispose={null} scale={0.2} rotation={[1.25, 0, 0]}>
+    <animated.group
+      {...props}
+      dispose={null}
+      scale={0.2}
+      rotation={
+        turnConsoleOver.rotation.to((x, y, z) => [x, y, z]) as unknown as [
+          number,
+          number,
+          number
+        ]
+      }
+    >
       <animated.mesh
         onPointerUp={() => {
           setButtonStartPosition([-0.083, 0.96, 6.081]);
@@ -255,7 +280,8 @@ export function GBConsole(props: GroupProps) {
           geometry={(nodes.Cylinder004 as THREE.Mesh).geometry}
           material={materials.Material}
         >
-          <MeshTransmissionMaterial
+          <meshStandardMaterial color="white" roughness={0} metalness={0.6} />
+          {/* <MeshTransmissionMaterial
             attach="material"
             thickness={3}
             roughness={0.51}
@@ -264,15 +290,22 @@ export function GBConsole(props: GroupProps) {
             attenuationDistance={0.2}
             distortionScale={0.3}
             temporalDistortion={1}
-          />
+          /> */}
         </mesh>
         <mesh
           castShadow
           receiveShadow
           material={materials["Material.001"]}
           geometry={(nodes.Cylinder004_1 as THREE.Mesh).geometry}
-        />
+        >
+          <MeshReflectorMaterial
+            attach="material"
+            roughness={0.51}
+            color="black"
+          />
+        </mesh>
       </group>
+      {/* display */}
       <group>
         <mesh
           castShadow
@@ -282,19 +315,26 @@ export function GBConsole(props: GroupProps) {
           position={[0, -0.116, -3.898]}
         >
           <Html
-            position={[0, 1.06, 0]}
+            position={[1.7, 1.06, 0]}
             rotation={[-1.575, 0, 0]}
             transform
             occlude
           >
             {power ? (
-              <div className="w-64 h-56 bg-white flex items-center justify-center">
-                <h1 className=" text-2xl font-black animate-bounce">CODEBOY</h1>
+              <div className="w-64 h-56 bg-black flex items-center justify-center overflow-hidden">
+                <img src="/me-gb.gif" alt="" className=" mt-4" />
+                {/* <p className="text-black text-2xl font-bold absolute bottom-4 bg-white p-2 rounded">
+                  Hello, World!
+                </p> */}
+                <div className="absolute top-0 left-0 mix-blend-multiply">
+                  <div className="gameboy-screen gameboy-screen-power-on h-56 w-64" />
+                </div>
               </div>
             ) : null}
           </Html>
         </mesh>
       </group>
+      {/* battery cover */}
       <mesh
         castShadow
         receiveShadow
@@ -302,18 +342,20 @@ export function GBConsole(props: GroupProps) {
         material={materials.Material}
         position={[0.165, -1.871, 5.801]}
       >
-        <MeshTransmissionMaterial
+        <meshStandardMaterial color="white" roughness={0} metalness={0.6} />
+        {/* <MeshTransmissionMaterial
           attach="material"
           thickness={3}
           roughness={0.1}
-          color="white"
+          color="green"
           ior={2}
           attenuationDistance={0.2}
           distortionScale={0.3}
           temporalDistortion={1}
-        />
+        /> */}
       </mesh>
-      <mesh
+      {/* Screen glass */}
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={(nodes.Screen_clear as THREE.Mesh).geometry}
@@ -332,8 +374,8 @@ export function GBConsole(props: GroupProps) {
           distortionScale={0}
           temporalDistortion={1}
         />
-      </mesh>
-    </group>
+      </mesh> */}
+    </animated.group>
   );
 }
 

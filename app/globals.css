@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3ae951;
+  background: white;
   border-radius: 10px;
 }
 
@@ -34,13 +34,21 @@ canvas {
   touch-action: none;
 }
 
-/* .bg-glow {
-  background: radial-gradient(
+.bg-glow {
+  /* background: radial-gradient(
     50% 50% at 50% 50%,
     rgba(255, 255, 255, 0.25) 0%,
     rgba(217, 217, 217, 0) 100%
-  );
-} */
+  ); */
+  background-image: url("/bg_img.png"),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 1) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(59, 126, 46, 0.5) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay, darken, darken;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 .avail-dot {
   animation: glow 3s infinite alternate;
@@ -71,6 +79,119 @@ canvas {
   -webkit-text-fill-color: transparent; */
 }
 
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #6bf75e,
+    rgb(18, 145, 107),
+    rgb(143, 245, 214),
+    rgba(72, 233, 58, 1),
+    #3ae9bf
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-text 4s ease alternate infinite;
+}
+
+.sticker-text-shadow {
+  -webkit-text-stroke: 12px rgb(255, 255, 255);
+}
+
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 .hero-gradient {
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.gameboy-screen {
+  /* Base screen styling */
+  background-color: #9bbc0f; /* Classic GameBoy green */
+  color: #0f380f; /* Dark green text */
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  font-family: "Courier New", monospace;
+  image-rendering: pixelated;
+
+  /* Pixel grid effect */
+  background-image: linear-gradient(rgba(15, 56, 15, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 56, 15, 0.05) 1px, transparent 1px);
+  background-size: 2px 2px;
+
+  /* Scan lines effect */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Screen glow */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(155, 188, 15, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+/* Dark variant - for powered off or dim screen */
+.gameboy-screen-off {
+  background-color: #0f380f;
+  color: #9bbc0f;
+  opacity: 0.8;
+}
+
+/* Animation for power on effect */
+@keyframes power-on {
+  0% {
+    opacity: 0;
+    background-color: #0f380f;
+  }
+  5% {
+    opacity: 0.8;
+    background-color: #9bbc0f;
+  }
+  10% {
+    opacity: 0.2;
+    background-color: #9bbc0f;
+  }
+  100% {
+    opacity: 1;
+    background-color: #9bbc0f;
+  }
+}
+
+.gameboy-screen-power-on {
+  animation: power-on 0.8s ease-in-out forwards;
 }

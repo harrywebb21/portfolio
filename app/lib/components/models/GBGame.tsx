@@ -5,6 +5,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { animated } from "@react-spring/three";
+import { ThreeElements } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -26,19 +27,27 @@ type GLTFResult = GLTF & {
   };
 };
 
-export default function GBGame(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/glb/gb_cartridge.glb") as GLTFResult;
+export default function GBGame({
+  props,
+  imgSrc,
+}: {
+  props?: ThreeElements["group"];
+  imgSrc: string;
+}) {
+  const { nodes, materials } = useGLTF(
+    "/glb/gb_cartridge.glb"
+  ) as unknown as GLTFResult;
   return (
     <animated.group
       {...props}
       dispose={null}
-      rotation={[0.6, 0.4, 0]}
+      rotation={[1.5, 0, 0]}
       scale={1.5}
     >
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cube.geometry}
+        geometry={(nodes.Cube as THREE.Mesh).geometry}
         rotation={[Math.PI / 2, 0, 0]}
         scale={[1.55109978, 1.80145276, 0.13214031]}
       >
@@ -74,7 +83,7 @@ export default function GBGame(props: JSX.IntrinsicElements["group"]) {
         <planeGeometry />
         <meshStandardMaterial
           attach="material"
-          map={new THREE.TextureLoader().load("/moodsify.jpg")}
+          map={new THREE.TextureLoader().load(imgSrc)}
           metalness={1}
           roughness={0.3}
         />
@@ -119,4 +128,4 @@ export default function GBGame(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/gb cartridge.glb");
+useGLTF.preload("/glb/gb_cartridge.glb");
